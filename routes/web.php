@@ -18,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [App\Http\Controllers\regController::class, 'index']);
+Route::post('/save', [App\Http\Controllers\regController::class, 'save']);
+
+Route::get('/view', [App\Http\Controllers\viewController::class, 'index']);
