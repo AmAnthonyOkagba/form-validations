@@ -4,36 +4,67 @@
 
 <div class="card">
     <div class="card-body register-card-body">
-      <p class="login-box-msg">Register a new membership</p>
+        @if (Session::has('message'))
+            <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+        @endif
+        @if (Session::has('emessage'))
+            <div class="alert alert-danger" role="alert">{{Session::get('message')}}</div>
+        @endif
+      <p class="login-box-msg">Register</p>
 
-        <form action="" method="post">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Full name">
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fas fa-user"></span>
-                    </div>
+        <form action="{{url('save')}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="fname" placeholder="First name">
                 </div>
+                @error('fname')
+                    <p class="text-danger">{{$message}}</p>
+                @enderror
             </div>
-            <div class="input-group mb-3">
-                <input type="email" class="form-control" placeholder="Email">
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fas fa-envelope"></span>
-                    </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="lname" placeholder="Last name">
                 </div>
+                @error('lname')
+                    <p class="text-danger">{{$message}}</p>
+                @enderror
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="email" placeholder="Email">
+                </div>
+                @error('email')
+                    <p class="text-danger">{{$message}}</p>
+                @enderror
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="tel" class="form-control" name="number" placeholder="Phone Number">
+                </div>
+                @error('number')
+                    <p class="text-danger">{{$message}}</p>
+                @enderror
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="talktitle" placeholder="Talk Title">
+                </div>
+                @error('talktitle')
+                    <p class="text-danger">{{$message}}</p>
+                @enderror
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="file" class="form-control" name="photo" placeholder="Your Profile Photo">
+                </div>
+                @error('photo')
+                    <p class="text-danger">{{$message}}</p>
+                @enderror
             </div>
             <div class="row">
-                <div class="col-8">
-                    <div class="icheck-primary">
-                        <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                        <label for="agreeTerms">
-                            I agree to the <a href="#">terms</a>
-                        </label>
-                    </div>
-                </div>
                 <div class="col-4">
-                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
                 </div>
             </div>
         </form>
