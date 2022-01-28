@@ -51,7 +51,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input type="tel" class="form-control" name="number" placeholder="Phone Number">
+                                    <input type="tel" class="form-control" name="number" placeholder="Mobile Number">
                                 </div>
                                 @error('number')
                                     <p class="text-danger">{{$message}}</p>
