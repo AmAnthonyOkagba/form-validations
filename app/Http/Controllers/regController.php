@@ -17,15 +17,11 @@ class regController extends Controller
         $this->validate($request, [
             'fname' => 'required',
             'lname' => 'required',
-            // 'email' =>'required|email',
+            'email' =>'required|email',
             'number' =>'required|numeric',
             'talktitle' =>'required',
-            'photo' =>'required ',
+            'photo' =>'required|mimes:jpeg,png',
         ]);
-
-        $messages = [
-            'email.required' => 'We need to know your email address!',
-        ];
 
         $user = new profile();
         $user->fname = $request->fname;
