@@ -21,3 +21,8 @@ Route::get('/', [App\Http\Controllers\regController::class, 'index']);
 Route::post('/save', [App\Http\Controllers\regController::class, 'save']);
 
 Route::get('/view', [App\Http\Controllers\viewController::class, 'index']);
+
+Route::get('/view/{id}', [App\Http\Controllers\viewController::class, 'edit'])->name('editview');
+Route::Put('update/{id}', [App\Http\Controllers\viewController::class, 'update']);
+
+Route::get('/delete/{id}', [App\Http\Controllers\viewController::class, 'delete'])->name('deleteview');
