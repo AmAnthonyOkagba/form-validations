@@ -80,6 +80,9 @@
                             </div>
                             <div class="row">
                                 <div class="col-4">
+                                    <a href="/view" type="submit" class="btn btn-primary btn-block">Back</a>
+                                </div>
+                                <div class="col-4">
                                     <button type="submit" class="btn btn-primary btn-block">Submit</button>
                                 </div>
                             </div>
