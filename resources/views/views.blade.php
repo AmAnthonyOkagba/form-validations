@@ -2,21 +2,22 @@
 
 @section('content')
 
-{{-- <div class="card">
-    <div class="card-body"> --}}
+<section class="content">
+    <div class="container-fluid">
+
+
         @if (Session::has('message'))
             <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
-        @endif
-        @if (Session::has('emessage'))
+        @elseif (Session::has('emessage'))
             <div class="alert alert-danger" role="alert">{{Session::get('message')}}</div>
         @endif
-      <p class="login-box-msg">Register</p>
+      <p class="login-box-msg">All Users</p>
 
       <div class="row">
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Responsive Hover Table</h3>
+              <h3 class="card-title">All Users</h3>
 
               <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -35,42 +36,37 @@
               <table class="table table-hover text-nowrap">
                 <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>User</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Reason</th>
+                    <th>No</th>
+                    <th>Photo</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Mobile Number</th>
+                    <th>Talk Title</th>
+                    <th>Date of Submission</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
+                    @foreach ($users as $user)
                   <tr>
-                    <td>183</td>
-                    <td>John Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-success">Approved</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    <td>{{$loop->index + 1}}</td>
+                    <td><img src="{{asset('img')}}/{{$user->photo}}" width="60"></td>
+                    <td>{{$user->fname}}</td>
+                    <td>{{$user->lname}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->number}}</td>
+                    <td>{{$user->talktitle}}</td>
+                    <td>{{date("Y/m/D h:i:sa", strtotime($user->created_at))}}</td>
+                    <td>
+                        <a href="{{route('editview',['id'=>$user->id])}}"><i class="fa fa-edit fa-2x"></i></a>
+                        <a 
+                        href="{{url('delete/'.$user->id) }}" >
+                            <i class="fa fa-times fa-2x text-danger ml-2"></i>
+                        </a>
+                    </td>
                   </tr>
-                  <tr>
-                    <td>219</td>
-                    <td>Alexander Pierce</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-warning">Pending</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>657</td>
-                    <td>Bob Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-primary">Approved</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>175</td>
-                    <td>Mike Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-danger">Denied</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -79,6 +75,6 @@
           <!-- /.card -->
         </div>
       </div>
-    {{-- </div>
-</div> --}}
+    </div>
+</section>
 @endsection
