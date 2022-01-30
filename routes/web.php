@@ -26,3 +26,5 @@ Route::get('/view/{id}', [App\Http\Controllers\viewController::class, 'edit'])->
 Route::Put('update/{id}', [App\Http\Controllers\viewController::class, 'update']);
 
 Route::get('/delete/{id}', [App\Http\Controllers\viewController::class, 'delete'])->name('deleteview');
+
+Route::get('/search/', [App\Http\Controllers\SearchController::class, 'index'])->name('search');
