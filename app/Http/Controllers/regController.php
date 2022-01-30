@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
+use App\Models\profile;
 use Illuminate\Http\Request;
 
 class regController extends Controller
@@ -20,7 +20,7 @@ class regController extends Controller
             'email' =>'required|email',
             'number' =>'required|numeric',
             'talktitle' =>'required',
-            'photo' =>'required|mimes:jpeg,png',
+            'photo' =>'required|mimes:jpeg,png,jpg',
         ]);
 
         $user = new profile();
