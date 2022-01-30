@@ -39,6 +39,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @if ($users->count()>0)
                     @foreach ($users as $user)
                   <tr>
                     <td>{{$loop->index + 1}}</td>
@@ -59,6 +60,11 @@
                   </tr>
                   @endforeach
                 </tbody>
+                @else
+                  <tr>
+                      <td colspan="9" class="text-center">No user found</td>
+                  </tr>
+                @endif
               </table>
             </div>
             <!-- /.card-body -->
