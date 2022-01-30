@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
+use App\Models\profile;
 use Illuminate\Http\Request;
 
 class viewController extends Controller
@@ -30,7 +30,7 @@ class viewController extends Controller
             'photo' =>'required',
         ]);
 
-        $user = Profile::find($request->id);
+        $user = profile::find($request->id);
         $user->fname = $request->input('fname');
         $user->lname = $request->lname;
         $user->email = $request->email;
